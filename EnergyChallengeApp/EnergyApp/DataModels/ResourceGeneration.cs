@@ -8,6 +8,6 @@ namespace EnergyApp.DataModels
         public string? Name { get; set; }
 
         [XmlElement]
-        public DailyGeneration DailyGeneration { get; set; }
+        public DailyGeneration? DailyGeneration { get; set; }
     }
 }

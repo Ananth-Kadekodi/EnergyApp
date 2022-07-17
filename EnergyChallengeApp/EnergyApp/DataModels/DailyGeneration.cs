@@ -7,6 +7,6 @@ namespace EnergyApp.DataModels
     public class DailyGeneration
     {
         [XmlElement("Day")]
-        public List<DayGeneration> DayGenerations { get; set; }
+        public List<DayGeneration>? DayGenerations { get; set; }
     }
 }
