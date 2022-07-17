@@ -7,7 +7,7 @@ namespace EnergyChallengeApp.API.ModuleConfiguration
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterType<HarveyDownloadService>().As<IService>().SingleInstance();
+            //builder.RegisterType<HarveyDownloadService>().As<IService>().SingleInstance();
         }
     }
 }

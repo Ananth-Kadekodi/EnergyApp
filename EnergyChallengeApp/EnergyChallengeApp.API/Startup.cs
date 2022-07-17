@@ -28,7 +28,7 @@ namespace EnergyChallengeApp.API
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new ServiceModule());
+            //builder.RegisterModule(new ServiceModule());
         }
     }
 }
