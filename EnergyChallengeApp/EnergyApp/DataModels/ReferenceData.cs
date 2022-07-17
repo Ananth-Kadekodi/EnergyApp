@@ -7,9 +7,10 @@ using System.Xml.Serialization;
 
 namespace EnergyApp.DataModels
 {
+    [XmlRoot(IsNullable = false)]
     public class ReferenceData
     {
         [XmlElement]
-        public ReferenceFactors Factors { get; set; }
+        public ReferenceDataFactors Factors { get; set; } = default!;
     }
 }

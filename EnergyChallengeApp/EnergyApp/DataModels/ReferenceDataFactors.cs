@@ -10,9 +10,9 @@ namespace EnergyApp.DataModels
     public class ReferenceDataFactors
     {
         [XmlElement]
-        public ReferenceDataFactor? EmissionsFactor { get; set; }
+        public ReferenceDataFactor EmissionsFactor { get; set; } = default!;
 
         [XmlElement]
-        public ReferenceDataFactor? ValueFactor { get; set; }
+        public ReferenceDataFactor ValueFactor { get; set; } = default!;
     }
 }

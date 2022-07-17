@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace EnergyApp.EnergyService
 {
-    internal class ReportProcessorService
+    public class ReportProcessorService : IReportProcessorService
     {
+        public void LoadReferenceData()
+        {
+
+        }
     }
 }

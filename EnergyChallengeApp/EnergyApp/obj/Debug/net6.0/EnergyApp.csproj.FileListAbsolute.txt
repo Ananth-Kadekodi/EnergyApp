@@ -1,0 +1,12 @@
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.csproj.AssemblyReference.cache
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.AssemblyInfoInputs.cache
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.AssemblyInfo.cs
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.csproj.CoreCompileInputs.cache
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\bin\Debug\net6.0\EnergyApp.deps.json
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\bin\Debug\net6.0\EnergyApp.dll
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\bin\Debug\net6.0\EnergyApp.pdb
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.dll
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\refint\EnergyApp.dll
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\EnergyApp.pdb
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyApp\obj\Debug\net6.0\ref\EnergyApp.dll

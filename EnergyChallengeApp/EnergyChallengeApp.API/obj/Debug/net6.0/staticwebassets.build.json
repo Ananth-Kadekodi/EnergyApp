@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7lY8e9XzyFu0w7H17dJKga5281cGmc+/p5L2si868iQ=",
+  "Source": "EnergyChallengeApp.API",
+  "BasePath": "_content/EnergyChallengeApp.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
