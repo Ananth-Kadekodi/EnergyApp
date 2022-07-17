@@ -6,6 +6,6 @@ namespace EnergyApp.DataModels
     public class WindGenerator : ResourceGeneration
     {
         [XmlElement]
-        public string? GeneratorLocation { get; set; }
+        public string? Location { get; set; }
     }
 }

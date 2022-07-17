@@ -14,7 +14,8 @@ namespace EnergyChallengeApp.Api
             FileManager fileManager = new FileManager();
 
             //CreateHostBuilder(args).Build().Run();
-            fileManager.LoadReferenceDataFile();
+            //fileManager.LoadReferenceDataFile();
+            fileManager.LoadInputXMLFile();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

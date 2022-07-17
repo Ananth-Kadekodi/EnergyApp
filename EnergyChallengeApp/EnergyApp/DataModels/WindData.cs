@@ -5,6 +5,6 @@ namespace EnergyApp.DataModels
     public class WindData
     {
         [XmlElement("WindGenerator")]
-        public List<WindGenerator>? WindGenerator { get; set; }
+        public List<WindGenerator> WindGenerator { get; set; } = default!;
     }
 }

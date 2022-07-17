@@ -6,6 +6,6 @@ namespace EnergyApp.DataModels
     public class CoalData
     {
         [XmlElement("CoalGenerator")]
-        public List<CoalGeneratorData>? CoalGeneratorData { get; set; }
+        public List<CoalGeneratorData> CoalGeneratorData { get; set; } = default!;
     }
 }

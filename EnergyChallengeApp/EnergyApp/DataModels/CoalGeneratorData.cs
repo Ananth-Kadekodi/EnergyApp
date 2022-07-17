@@ -6,13 +6,13 @@ namespace EnergyApp.DataModels
     public class CoalGeneratorData : ResourceGeneration
     {
         [XmlElement]
-        public double ActualNetGeneration { get; set; }
+        public decimal ActualNetGeneration { get; set; }
 
         [XmlElement]
-        public double EmissionsRating { get; set; }
+        public decimal EmissionsRating { get; set; }
 
         [XmlElement]
-        public double TotalHeatInput { get; set; }
+        public decimal TotalHeatInput { get; set; }
       
     }
 }

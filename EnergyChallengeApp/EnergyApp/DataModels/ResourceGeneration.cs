@@ -5,9 +5,9 @@ namespace EnergyApp.DataModels
     public class ResourceGeneration
     {
         [XmlElement]
-        public string? Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [XmlElement]
-        public DailyGeneration? DailyGeneration { get; set; }
+        public DailyGeneration Generation { get; set; } = default!;
     }
 }

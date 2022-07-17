@@ -2,17 +2,16 @@
 
 namespace EnergyApp.DataModels
 {
-    public class GenerationType
+    [XmlRoot(ElementName = "GenerationReport", IsNullable = false)]
+    public class GenerationData
     {
         [XmlElement]
-        public CoalData? CoalData { get; set; }
+        public CoalData Coal { get; set; } = default!;
 
         [XmlElement]
-        public WindData? WindData { get; set; }
+        public WindData Wind { get; set; } = default!;
 
         [XmlElement]
-        public GasData? GasData { get; set; }
-
-        
+        public GasData Gas { get; set; } = default!;
     }
 }
