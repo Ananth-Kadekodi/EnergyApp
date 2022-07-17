@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nUpA3Ii6jO7slY5uC6dvOnukPAdHOWL8b+m+aVtZHdQyjksVGQ6HV6syMC192mwquO7cNgSFxZuQX9MaK8FC6w==",
+  "dgSpecHash": "GmEWxlTf0+x4LDUDN+7/n9ZD6GAvZRJPZfkftJzQ/9vccDmyxutBh1ep2fj1kb5vMGOmdmJn42J7UCLtDmUpRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
+  "projectFilePath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TABKAD\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
     "C:\\Users\\TABKAD\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",

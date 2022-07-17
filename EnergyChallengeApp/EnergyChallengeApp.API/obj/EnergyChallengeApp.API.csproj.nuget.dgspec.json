@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {}
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
+        "projectUniqueName": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
         "projectName": "EnergyChallengeApp.API",
-        "projectPath": "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
+        "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
         "packagesPath": "C:\\Users\\TABKAD\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TABKAD\\RiderProjects\\EnergyChallengeApp\\EnergyChallengeApp.API\\obj\\",
+        "outputPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",

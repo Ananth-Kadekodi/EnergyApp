@@ -1,4 +1,5 @@
 using Autofac.Extensions.DependencyInjection;
+using EnergyChallengeApp.API;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
