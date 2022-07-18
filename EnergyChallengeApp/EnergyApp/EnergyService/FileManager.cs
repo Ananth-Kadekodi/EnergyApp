@@ -46,5 +46,15 @@ namespace EnergyApp.EnergyService
 
             return generationData;
         }
+
+        public void WriteOutputToFile(GenerationOutputData generationOutputData)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationOutputData));
+            var outputFileDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var outputFilePath = outputFileDataConfig.GetValue<string>("AppSettings:OUTPUT_FILE_PATH");
+            TextWriter writer = new StreamWriter(outputFilePath);
+            xmlSerializer.Serialize(writer, generationOutputData);
+            writer.Close();
+        }
     }
 }

@@ -17,7 +17,8 @@ namespace EnergyChallengeApp.Api
             //CreateHostBuilder(args).Build().Run();
             var referenceData = fileManager.LoadReferenceDataFile();
             var generationReportData = fileManager.LoadInputXMLFile();
-            reportProcessorService.ProcessInputReport(generationReportData, referenceData);
+            var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
+            fileManager.WriteOutputToFile(generationOutputData);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
