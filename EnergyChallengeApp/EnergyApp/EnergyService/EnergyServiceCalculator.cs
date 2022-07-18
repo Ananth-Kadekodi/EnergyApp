@@ -1,6 +1,7 @@
 ﻿
 
 using EnergyApp.DataModels;
+using System.Linq;
 
 namespace EnergyApp.EnergyService
 {
@@ -34,5 +35,51 @@ namespace EnergyApp.EnergyService
         {
             return (energy * price * generatorFactor);
         }
+
+        public void CalculateMaxGeneratorEmissions(ResourceGeneration generator, double emissionsRating, List<DailyEmissionGenerated> highestDailyEmissions, double emissionFactor)
+        {
+            CalculateMaxDailyEmissions(generator, emissionsRating, highestDailyEmissions, emissionFactor);
+        }
+
+        private void CalculateMaxDailyEmissions(ResourceGeneration generator, double emissionsRating, List<DailyEmissionGenerated> highestDailyEmissions, double emissionFactor)
+        {
+            foreach(var dayGeneration in generator.Generation.DayGenerations)
+            {
+                var dayEnergyEmission = CalculateDayEnergyEmission(dayGeneration.Energy, emissionsRating, emissionFactor);
+
+                if (!highestDailyEmissions.Any(s => s.Date == dayGeneration.Date)) {
+                    //Add Value if not emission for that date exists
+                    addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
+                }else if (highestDailyEmissions.Any(s => s.Date == dayGeneration.Date && s.Emission < dayEnergyEmission))
+                {
+                    var emissionToRemove = highestDailyEmissions.Single(r => r.Date == dayGeneration.Date);
+                    highestDailyEmissions.Remove(emissionToRemove);
+                    addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
+                }
+            }
+        }
+
+        private void addMaxDayEmissionRecord(string name, DateTime date, double dayEnergyEmission, List<DailyEmissionGenerated> highestDailyEmissions)
+        {
+            highestDailyEmissions.Add(new DailyEmissionGenerated 
+            {
+                Name = name,
+                Date = date,
+                Emission = dayEnergyEmission
+            });
+
+        }
+
+        private void addMaxDayEmissionRecord(string name, DateTime date, double dayEnergyEmission)
+        {
+            throw new NotImplementedException();
+        }
+
+        private double CalculateDayEnergyEmission(double energy, double emissionsRating, double emissionFactor)
+        {
+            return (energy * emissionsRating * emissionFactor);
+        }
+
+      
     }
 }

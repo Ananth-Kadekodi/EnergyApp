@@ -27,13 +27,13 @@ namespace EnergyApp.EnergyService
             {
                 foreach(var generator in generationData.Wind.WindGenerator)
                 {
-                    if (generator.Location.Equals("ONSHORE"))
+                    if (generator.Location.ToUpper().Equals("ONSHORE"))
                     {
                         var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.High);
                         totalGenerations.Add(totalGeneration);
                     }
 
-                    if (generator.Location.Equals("OFFSHORE"))
+                    if (generator.Location.ToUpper().Equals("OFFSHORE"))
                     {
                         var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Low);
                         totalGenerations.Add(totalGeneration);
@@ -42,6 +42,20 @@ namespace EnergyApp.EnergyService
                 }
             }
 
+            if(generationData.Coal.CoalGeneratorData.Count > 0)
+            {
+                foreach (var generator in generationData.Coal.CoalGeneratorData)
+                {
+                    var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
+                    totalGenerations.Add(totalGeneration);
+
+                    energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.High);
+                }
+                    
+            }
+
         }
+
+       
     }
 }
