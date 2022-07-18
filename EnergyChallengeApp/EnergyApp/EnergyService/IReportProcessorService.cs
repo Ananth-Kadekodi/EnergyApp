@@ -4,6 +4,6 @@ namespace EnergyApp.EnergyService
 {
     public interface IReportProcessorService
     {
-        void ProcessInputReport(GenerationData generationData, ReferenceData referenceData);
+        GenerationOutputData ProcessInputReport(GenerationData generationData, ReferenceData referenceData);
     }
 }

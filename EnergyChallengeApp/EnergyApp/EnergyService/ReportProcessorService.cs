@@ -9,13 +9,21 @@ namespace EnergyApp.EnergyService
 {
     public class ReportProcessorService : IReportProcessorService
     {
-        public void ProcessInputReport(GenerationData generationData, ReferenceData referenceData)
+        public GenerationOutputData ProcessInputReport(GenerationData generationData, ReferenceData referenceData)
         {
             var totalGenerations = new List<Generator>();
             var highestDailyEmissions = new List<DailyEmissionGenerated>();
             var heatRates = new List<GeneratorHeatRates>();
 
             CalculateOutputs(generationData, referenceData, totalGenerations, highestDailyEmissions, heatRates);
+            var generationOutput = new GenerationOutputData
+            {
+                Totals = new GeneratorTotalData { GeneratorTotalValues = totalGenerations},
+                MaxEmissionGeneratorsData = new MaxEmissionGeneratorsData { GeneratorDayEmissions = highestDailyEmissions},
+                ActualHeatRatesData = new ActualHeatRatesData { GeneratorActualHeatRates = heatRates }
+            };
+
+            return generationOutput;
         }
 
 
