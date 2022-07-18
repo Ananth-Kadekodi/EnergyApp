@@ -54,8 +54,18 @@ namespace EnergyApp.EnergyService
                     var generatorHeatRate = energyServiceCalculator.CalculateHeatRate(generator, generator.ActualNetGeneration, generator.TotalHeatInput);
                     heatRates.Add(generatorHeatRate);
 
+                }     
+            }
+
+            if (generationData.Gas.GasGeneratorData.Count > 0)
+            {
+                foreach (var generator in generationData.Gas.GasGeneratorData)
+                {
+                    var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
+                    totalGenerations.Add(totalGeneration);
+
+                    energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
                 }
-                    
             }
 
         }
