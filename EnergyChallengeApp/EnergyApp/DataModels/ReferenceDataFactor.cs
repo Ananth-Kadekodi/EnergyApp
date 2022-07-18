@@ -10,13 +10,13 @@ namespace EnergyApp.DataModels
     public class ReferenceDataFactor
     {
         [XmlElement]
-        public decimal Low { get; set; }
+        public double Low { get; set; }
 
         [XmlElement]
-        public decimal High { get; set; }
+        public double High { get; set; }
 
         [XmlElement]
-        public decimal Medium { get; set; }
+        public double Medium { get; set; }
 
         
     }

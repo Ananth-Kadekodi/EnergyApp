@@ -2,15 +2,15 @@
 
 namespace EnergyApp.DataModels
 {
-    public class DayGeneration
+    public class DailyEmissionGenerated
     {
         [XmlElement]
-        public double Price { get; set; }
+        public string? Name { get; set; }
 
         [XmlElement]
         public DateTime Date { get; set; }
 
         [XmlElement]
-        public double Energy { get; set; }
+        public double Emission { get; set; }
     }
 }

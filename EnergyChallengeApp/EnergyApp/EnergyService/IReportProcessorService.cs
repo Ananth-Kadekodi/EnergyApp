@@ -1,7 +1,9 @@
-﻿namespace EnergyApp.EnergyService
+﻿using EnergyApp.DataModels;
+
+namespace EnergyApp.EnergyService
 {
     public interface IReportProcessorService
     {
-        void LoadReferenceData();
+        void ProcessInputReport(GenerationData generationData, ReferenceData referenceData);
     }
 }

@@ -5,6 +5,6 @@ namespace EnergyApp.DataModels
     public class GasGeneratorData: ResourceGeneration
     {
         [XmlElement]
-        public decimal EmissionsRating { get; set; }
+        public double EmissionsRating { get; set; }
     }
 }
