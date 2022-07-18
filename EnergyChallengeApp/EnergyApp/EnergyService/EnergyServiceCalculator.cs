@@ -70,11 +70,6 @@ namespace EnergyApp.EnergyService
 
         }
 
-        private void addMaxDayEmissionRecord(string name, DateTime date, double dayEnergyEmission)
-        {
-            throw new NotImplementedException();
-        }
-
         private double CalculateDayEnergyEmission(double energy, double emissionsRating, double emissionFactor)
         {
             return (energy * emissionsRating * emissionFactor);
