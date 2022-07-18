@@ -18,12 +18,12 @@ namespace EnergyApp.EnergyService
         {
             double total = 0;
 
-            if(dayGenerations.Count == 0)
+            if (dayGenerations.Count == 0)
             {
                 return 0;
             }
 
-            foreach(var dayGeneration in dayGenerations)
+            foreach (var dayGeneration in dayGenerations)
             {
                 total += CalculateDailyEnergyGenerated(dayGeneration.Energy, dayGeneration.Price, generatorFactor);
             }
@@ -43,14 +43,14 @@ namespace EnergyApp.EnergyService
 
         private void CalculateMaxDailyEmissions(ResourceGeneration generator, double emissionsRating, List<DailyEmissionGenerated> highestDailyEmissions, double emissionFactor)
         {
-            foreach(var dayGeneration in generator.Generation.DayGenerations)
+            foreach (var dayGeneration in generator.Generation.DayGenerations)
             {
                 var dayEnergyEmission = CalculateDayEnergyEmission(dayGeneration.Energy, emissionsRating, emissionFactor);
 
                 if (!highestDailyEmissions.Any(s => s.Date == dayGeneration.Date)) {
                     //Add Value if not emission for that date exists
                     addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
-                }else if (highestDailyEmissions.Any(s => s.Date == dayGeneration.Date && s.Emission < dayEnergyEmission))
+                } else if (highestDailyEmissions.Any(s => s.Date == dayGeneration.Date && s.Emission < dayEnergyEmission))
                 {
                     var emissionToRemove = highestDailyEmissions.Single(r => r.Date == dayGeneration.Date);
                     highestDailyEmissions.Remove(emissionToRemove);
@@ -61,7 +61,7 @@ namespace EnergyApp.EnergyService
 
         private void addMaxDayEmissionRecord(string name, DateTime date, double dayEnergyEmission, List<DailyEmissionGenerated> highestDailyEmissions)
         {
-            highestDailyEmissions.Add(new DailyEmissionGenerated 
+            highestDailyEmissions.Add(new DailyEmissionGenerated
             {
                 Name = name,
                 Date = date,
@@ -75,6 +75,24 @@ namespace EnergyApp.EnergyService
             return (energy * emissionsRating * emissionFactor);
         }
 
-      
+        public GeneratorHeatRates CalculateHeatRate(CoalGeneratorData generator, double actualNetGeneration, double totalHeatInput)
+        {
+            var heatRate = new GeneratorHeatRates{ Name = generator.Name};
+            heatRate.HeatRate = RetrieveHeatRate(actualNetGeneration, totalHeatInput);
+            return heatRate;
+        }
+
+        private double? RetrieveHeatRate(double actualNetGeneration, double totalHeatInput)
+        {
+            if(actualNetGeneration != 0  && totalHeatInput != 0)
+            {
+                return totalHeatInput / actualNetGeneration;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
     }
 }

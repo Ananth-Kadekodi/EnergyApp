@@ -13,13 +13,13 @@ namespace EnergyApp.EnergyService
         {
             var totalGenerations = new List<Generator>();
             var highestDailyEmissions = new List<DailyEmissionGenerated>();
-            var heartRates = new List<GeneratorHeartRates>();
+            var heatRates = new List<GeneratorHeatRates>();
 
-            CalculateOutputs(generationData, referenceData, totalGenerations, highestDailyEmissions, heartRates);
+            CalculateOutputs(generationData, referenceData, totalGenerations, highestDailyEmissions, heatRates);
         }
 
 
-        private void CalculateOutputs(GenerationData generationData, ReferenceData referenceData,  List<Generator> totalGenerations, List<DailyEmissionGenerated> highestDailyEmissions, List<GeneratorHeartRates> heartRates)
+        private void CalculateOutputs(GenerationData generationData, ReferenceData referenceData,  List<Generator> totalGenerations, List<DailyEmissionGenerated> highestDailyEmissions, List<GeneratorHeatRates> heatRates)
         {
             EnergyServiceCalculator energyServiceCalculator = new EnergyServiceCalculator();
 
@@ -50,12 +50,14 @@ namespace EnergyApp.EnergyService
                     totalGenerations.Add(totalGeneration);
 
                     energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.High);
+
+                    var generatorHeatRate = energyServiceCalculator.CalculateHeatRate(generator, generator.ActualNetGeneration, generator.TotalHeatInput);
+                    heatRates.Add(generatorHeatRate);
+
                 }
                     
             }
 
         }
-
-       
     }
 }

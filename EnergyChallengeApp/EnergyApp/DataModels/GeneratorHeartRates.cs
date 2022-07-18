@@ -2,7 +2,7 @@
 
 namespace EnergyApp.DataModels
 {
-    public class GeneratorHeartRates
+    public class GeneratorHeatRates
     {
         [XmlElement]
         public string? Name { get; set; }
