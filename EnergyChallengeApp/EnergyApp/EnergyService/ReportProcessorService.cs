@@ -41,11 +41,10 @@ namespace EnergyApp.EnergyService
                         var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Low);
                         totalGenerations.Add(totalGeneration);
                     }
-
                 }
             }
 
-            if(generationData.Coal.CoalGeneratorData.Count > 0)
+            if (generationData.Coal.CoalGeneratorData.Count > 0)
             {
                 foreach (var generator in generationData.Coal.CoalGeneratorData)
                 {
@@ -70,7 +69,6 @@ namespace EnergyApp.EnergyService
                     energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
                 }
             }
-
         }
     }
 }

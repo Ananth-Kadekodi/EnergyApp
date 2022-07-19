@@ -48,12 +48,16 @@ namespace EnergyApp.EnergyService
                 var dayEnergyEmission = CalculateDayEnergyEmission(dayGeneration.Energy, emissionsRating, emissionFactor);
 
                 if (!highestDailyEmissions.Any(s => s.Date == dayGeneration.Date)) {
+                   
                     //Add Value if not emission for that date exists
                     addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
+
                 } else if (highestDailyEmissions.Any(s => s.Date == dayGeneration.Date && s.Emission < dayEnergyEmission))
                 {
                     var emissionToRemove = highestDailyEmissions.Single(r => r.Date == dayGeneration.Date);
+                    
                     highestDailyEmissions.Remove(emissionToRemove);
+                    
                     addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
                 }
             }
@@ -67,12 +71,11 @@ namespace EnergyApp.EnergyService
                 Date = date,
                 Emission = dayEnergyEmission
             });
-
         }
 
         private double CalculateDayEnergyEmission(double energy, double emissionsRating, double emissionFactor)
         {
-            return (energy * emissionsRating * emissionFactor);
+            return energy * emissionsRating * emissionFactor;
         }
 
         public GeneratorHeatRates CalculateHeatRate(CoalGeneratorData generator, double actualNetGeneration, double totalHeatInput)
@@ -84,15 +87,14 @@ namespace EnergyApp.EnergyService
 
         private double? RetrieveHeatRate(double actualNetGeneration, double totalHeatInput)
         {
-            if(actualNetGeneration != 0  && totalHeatInput != 0)
+            if (actualNetGeneration != 0  && totalHeatInput != 0)
             {
                 return totalHeatInput / actualNetGeneration;
             }
             else
             {
                 return null;
-            }
-            
+            }         
         }
     }
 }

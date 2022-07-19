@@ -1,25 +1,20 @@
 ﻿using EnergyApp.DataModels;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
-using System.Configuration;
 
 namespace EnergyApp.EnergyService
 {
     public class FileManager
     {
+        string referenceDataFilePath = "REFERENCE_FILE_PATH";
+        string inputDataFilePath = "INPUT_FILE_PATH";
+
         public ReferenceData LoadReferenceDataFile()
         {
             ReferenceData referenceData = new ReferenceData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(ReferenceData));
 
-            var referenceDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var referenceFilePath = referenceDataConfig.GetValue<string>("AppSettings:REFERENCE_FILE_PATH");
-            var referenceFileName = referenceDataConfig.GetValue<string>("AppSettings:REFERENCE_FILE_NAME");
+            var referenceFilePath = retrieveFilePath(referenceDataFilePath);
 
             using (Stream reader = new FileStream(referenceFilePath, FileMode.Open))
             {
@@ -29,17 +24,20 @@ namespace EnergyApp.EnergyService
             return referenceData;
         }
 
+        public string retrieveFilePath(string filePath)
+        {
+            var referenceDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            return referenceDataConfig.GetValue<string>("AppSettings:"+ filePath);
+        }
+
         public GenerationData LoadInputXMLFile()
         {
             GenerationData generationData = new GenerationData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationData));
-            
 
-            var referenceDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var referenceFilePath = referenceDataConfig.GetValue<string>("AppSettings:INPUT_FILE_PATH");
-            var referenceFileName = referenceDataConfig.GetValue<string>("AppSettings:INPUT_FILE_NAME");
+            var inputFilePath = retrieveFilePath(inputDataFilePath);
 
-            using (Stream reader = new FileStream(referenceFilePath, FileMode.Open))
+            using (Stream reader = new FileStream(inputFilePath, FileMode.Open))
             {
                 generationData = (GenerationData)xmlSerializer.Deserialize(reader);
             }

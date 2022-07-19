@@ -17,7 +17,6 @@ namespace EnergyApp.EnergyService
             var generationReportData = fileManager.LoadInputXMLFile();
             var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
             fileManager.WriteOutputToFile(generationOutputData);
-
         }
 
         public void MonitorDirectory(string path)
@@ -29,12 +28,10 @@ namespace EnergyApp.EnergyService
             watcher.EnableRaisingEvents = true;
         }
 
-
         private void FileCreatedInMonitoredDirectory(object sender, FileSystemEventArgs e)
         {
             RunApplication();
         }
-
-
     }
 }
+
