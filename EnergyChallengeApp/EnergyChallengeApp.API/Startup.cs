@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using EnergyChallengeApp.API.ModuleConfiguration;
 using System.Reflection;
 
 namespace EnergyChallengeApp.API
@@ -26,9 +27,25 @@ namespace EnergyChallengeApp.API
             });
         }
 
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+
+        }
+
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            //builder.RegisterModule(new ServiceModule());
+            builder.RegisterModule(new ServiceModule());
         }
     }
 }
