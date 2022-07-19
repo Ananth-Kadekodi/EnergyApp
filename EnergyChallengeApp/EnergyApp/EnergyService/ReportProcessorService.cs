@@ -70,6 +70,7 @@ namespace EnergyApp.EnergyService
             {
                 Console.WriteLine("Error performing calculations for coal data", ex.Message);
             }
+
             try
             {
                 if (generationData.Gas.GasGeneratorData.Count > 0)

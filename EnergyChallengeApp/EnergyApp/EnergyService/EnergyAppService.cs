@@ -16,11 +16,13 @@ namespace EnergyApp.EnergyService
             var referenceData = fileManager.LoadReferenceDataFile();
             var generationReportData = fileManager.LoadInputXMLFile();
             var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
-            fileManager.WriteOutputToFile(generationOutput);
+            fileManager.WriteOutputToFile(generationOutputData);
         }
 
         public void MonitorDirectory(string path)
         {
+            Console.WriteLine("Monitoring the input folder");
+
             var watcher = new FileSystemWatcher();
             watcher.Path = path;
             watcher.NotifyFilter = NotifyFilters.LastWrite;
@@ -30,6 +32,7 @@ namespace EnergyApp.EnergyService
 
         private void FileCreatedInMonitoredDirectory(object sender, FileSystemEventArgs e)
         {
+            Console.WriteLine("New file found - running application");
             RunApplication();
         }
     }

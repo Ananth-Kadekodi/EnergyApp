@@ -6,8 +6,9 @@ namespace EnergyApp.EnergyService
 {
     public class FileManager
     {
-        string referenceDataFilePath = "REFERENCE_FILE_PATH";
-        string inputDataFilePath = "INPUT_FILE_PATH";
+        static string referenceDataFilePath = "REFERENCE_FILE_PATH";
+        static string inputDataFilePath = "INPUT_FILE_PATH";
+        static string outputDataFilePath = "OUTPUT_FILE_PATH";
 
         public ReferenceData LoadReferenceDataFile()
         {
@@ -30,7 +31,7 @@ namespace EnergyApp.EnergyService
             return referenceData;
         }
 
-        public string retrieveFilePath(string filePath)
+        private string retrieveFilePath(string filePath)
         {
             var referenceDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             return referenceDataConfig.GetValue<string>("AppSettings:"+ filePath);
@@ -60,11 +61,18 @@ namespace EnergyApp.EnergyService
         public void WriteOutputToFile(GenerationOutput generationOutputData)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationOutput));
-            var outputFileDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var outputFilePath = outputFileDataConfig.GetValue<string>("AppSettings:OUTPUT_FILE_PATH");
-            TextWriter writer = new StreamWriter(outputFilePath);
-            xmlSerializer.Serialize(writer, generationOutputData);
-            writer.Close();
+            var outputFilePath = retrieveFilePath(outputDataFilePath);
+            var inputFilePath = retrieveFilePath(inputDataFilePath);
+            try
+            {
+                TextWriter writer = new StreamWriter(outputFilePath);
+                xmlSerializer.Serialize(writer, generationOutputData);
+                writer.Close();
+
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error outputting to file", ex.Message);
+            }
         }
     }
 }
