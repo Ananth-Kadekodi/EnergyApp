@@ -16,11 +16,17 @@ namespace EnergyApp.EnergyService
 
             var referenceFilePath = retrieveFilePath(referenceDataFilePath);
 
-            using (Stream reader = new FileStream(referenceFilePath, FileMode.Open))
+            try
             {
-                referenceData = (ReferenceData)xmlSerializer.Deserialize(reader);
+                using (Stream reader = new FileStream(referenceFilePath, FileMode.Open))
+                {
+                    referenceData = (ReferenceData)xmlSerializer.Deserialize(reader);
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Exception retrieving reference file data", ex.Message);
             }
-
+            
             return referenceData;
         }
 
@@ -37,17 +43,23 @@ namespace EnergyApp.EnergyService
 
             var inputFilePath = retrieveFilePath(inputDataFilePath);
 
-            using (Stream reader = new FileStream(inputFilePath, FileMode.Open))
+            try
             {
-                generationData = (GenerationData)xmlSerializer.Deserialize(reader);
+                using (Stream reader = new FileStream(inputFilePath, FileMode.Open))
+                {
+                    generationData = (GenerationData)xmlSerializer.Deserialize(reader);
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Exception retrieving input data file", ex.Message);
             }
 
             return generationData;
         }
 
-        public void WriteOutputToFile(GenerationOutputData generationOutputData)
+        public void WriteOutputToFile(GenerationOutput generationOutputData)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationOutputData));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationOutput));
             var outputFileDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var outputFilePath = outputFileDataConfig.GetValue<string>("AppSettings:OUTPUT_FILE_PATH");
             TextWriter writer = new StreamWriter(outputFilePath);

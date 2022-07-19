@@ -4,14 +4,14 @@ namespace EnergyApp.EnergyService
 {
     public class ReportProcessorService : IReportProcessorService
     {
-        public GenerationOutputData ProcessInputReport(GenerationData generationData, ReferenceData referenceData)
+        public GenerationOutput ProcessInputReport(GenerationData generationData, ReferenceData referenceData)
         {
             var totalGenerations = new List<Generator>();
             var highestDailyEmissions = new List<DailyEmissionGenerated>();
             var heatRates = new List<GeneratorHeatRates>();
 
             CalculateOutputs(generationData, referenceData, totalGenerations, highestDailyEmissions, heatRates);
-            var generationOutput = new GenerationOutputData
+            var generationOutput = new GenerationOutput
             {
                 Totals = new GeneratorTotalData { GeneratorTotalValues = totalGenerations},
                 MaxEmissionGeneratorsData = new MaxEmissionGeneratorsData { GeneratorDayEmissions = highestDailyEmissions},
@@ -26,49 +26,67 @@ namespace EnergyApp.EnergyService
         {
             EnergyServiceCalculator energyServiceCalculator = new EnergyServiceCalculator();
 
-            if (generationData.Wind.WindGenerator.Count > 0)
+            try
             {
-                foreach(var generator in generationData.Wind.WindGenerator)
+                if (generationData.Wind.WindGenerator.Count > 0)
                 {
-                    if (generator.Location.ToUpper().Equals("ONSHORE"))
+                    foreach (var generator in generationData.Wind.WindGenerator)
                     {
-                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.High);
-                        totalGenerations.Add(totalGeneration);
-                    }
+                        if (generator.Location.ToUpper().Equals("ONSHORE"))
+                        {
+                            var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.High);
+                            totalGenerations.Add(totalGeneration);
+                        }
 
-                    if (generator.Location.ToUpper().Equals("OFFSHORE"))
-                    {
-                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Low);
-                        totalGenerations.Add(totalGeneration);
+                        if (generator.Location.ToUpper().Equals("OFFSHORE"))
+                        {
+                            var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Low);
+                            totalGenerations.Add(totalGeneration);
+                        }
                     }
                 }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error performing calculations for wind data", ex.Message);
             }
 
-            if (generationData.Coal.CoalGeneratorData.Count > 0)
+            try
             {
-                foreach (var generator in generationData.Coal.CoalGeneratorData)
+                if (generationData.Coal.CoalGeneratorData.Count > 0)
                 {
-                    var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
-                    totalGenerations.Add(totalGeneration);
+                    foreach (var generator in generationData.Coal.CoalGeneratorData)
+                    {
+                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
+                        totalGenerations.Add(totalGeneration);
 
-                    energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.High);
+                        energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.High);
 
-                    var generatorHeatRate = energyServiceCalculator.CalculateHeatRate(generator, generator.ActualNetGeneration, generator.TotalHeatInput);
-                    heatRates.Add(generatorHeatRate);
+                        var generatorHeatRate = energyServiceCalculator.CalculateHeatRate(generator, generator.ActualNetGeneration, generator.TotalHeatInput);
+                        heatRates.Add(generatorHeatRate);
 
-                }     
-            }
-
-            if (generationData.Gas.GasGeneratorData.Count > 0)
-            {
-                foreach (var generator in generationData.Gas.GasGeneratorData)
-                {
-                    var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
-                    totalGenerations.Add(totalGeneration);
-
-                    energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
+                    }
                 }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error performing calculations for coal data", ex.Message);
             }
+            try
+            {
+                if (generationData.Gas.GasGeneratorData.Count > 0)
+                {
+                    foreach (var generator in generationData.Gas.GasGeneratorData)
+                    {
+                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
+                        totalGenerations.Add(totalGeneration);
+
+                        energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
+                    }
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error performing calculations for gas data", ex.Message);
+            }
+           
         }
     }
 }

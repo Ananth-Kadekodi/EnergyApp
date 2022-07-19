@@ -16,7 +16,7 @@ namespace EnergyApp.EnergyService
             var referenceData = fileManager.LoadReferenceDataFile();
             var generationReportData = fileManager.LoadInputXMLFile();
             var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
-            fileManager.WriteOutputToFile(generationOutputData);
+            fileManager.WriteOutputToFile(generationOutput);
         }
 
         public void MonitorDirectory(string path)

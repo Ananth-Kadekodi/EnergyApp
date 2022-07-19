@@ -2,7 +2,7 @@
 
 namespace EnergyApp.DataModels
 {
-    public class GenerationOutputData
+    public class GenerationOutput
     {
         [XmlElement]
         public GeneratorTotalData Totals { get; set; }
