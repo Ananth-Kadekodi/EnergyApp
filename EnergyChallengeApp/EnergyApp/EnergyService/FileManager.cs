@@ -9,6 +9,7 @@ namespace EnergyApp.EnergyService
         private static string referenceDataFilePath = "REFERENCE_FILE_PATH";
         private static string inputDataFilePath = "INPUT_FILE_PATH";
         private static string outputDataFilePath = "OUTPUT_FILE_PATH";
+        private static string archiveDataFilePath = "ARCHIVE_FILE_PATH";
 
         public ReferenceData LoadReferenceDataFile(string fileName)
         {
@@ -67,12 +68,14 @@ namespace EnergyApp.EnergyService
 
             var outputFilePath = RetrieveFilePath(outputDataFilePath, generatedOutputFileName);
             var inputFilePath = RetrieveFilePath(inputDataFilePath, inputFileName);
+            var archiveFilePath = RetrieveFilePath(archiveDataFilePath, inputFileName);
             try
             {
                 TextWriter writer = new StreamWriter(outputFilePath);
                 xmlSerializer.Serialize(writer, generationOutputData);
                 writer.Close();
 
+                File.Copy(inputFilePath, archiveFilePath);
                 File.Delete(inputFilePath);
 
             } catch (Exception ex)
