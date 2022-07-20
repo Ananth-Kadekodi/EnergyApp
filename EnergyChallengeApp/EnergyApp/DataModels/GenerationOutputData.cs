@@ -5,12 +5,12 @@ namespace EnergyApp.DataModels
     public class GenerationOutput
     {
         [XmlElement]
-        public GeneratorTotalData Totals { get; set; }
+        public GeneratorTotalData? Totals { get; set; }
 
         [XmlElement("MaxEmissionGenerators")]
-        public MaxEmissionGeneratorsData MaxEmissionGeneratorsData { get; set; }
+        public MaxEmissionGeneratorsData? MaxEmissionGeneratorsData { get; set; }
 
         [XmlElement("ActualHeatRates")]
-        public ActualHeatRatesData ActualHeatRatesData { get; set; }
+        public ActualHeatRatesData? ActualHeatRatesData { get; set; }
     }
 }

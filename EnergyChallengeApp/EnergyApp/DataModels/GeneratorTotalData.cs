@@ -5,7 +5,7 @@ namespace EnergyApp.DataModels
     public class GeneratorTotalData
     {
         [XmlElement("Generator")]
-        public List<Generator> GeneratorTotalValues { get; set;}
+        public List<Generator>? GeneratorTotalValues { get; set;}
 
     }
 }

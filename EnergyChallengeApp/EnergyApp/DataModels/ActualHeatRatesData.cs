@@ -5,6 +5,6 @@ namespace EnergyApp.DataModels
     public class ActualHeatRatesData
     {
         [XmlElement("ActualHeatRate")]
-        public List<GeneratorHeatRates> GeneratorActualHeatRates { get; set; }
+        public List<GeneratorHeatRates>? GeneratorActualHeatRates { get; set; }
     }
 }
