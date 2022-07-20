@@ -112,3 +112,4 @@ C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyAppUnitTests\obj\Debug\net6.0\ref
 C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyAppUnitTests\obj\Debug\net6.0\EnergyAppUnitTests.pdb
 C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyAppUnitTests\obj\Debug\net6.0\EnergyAppUnitTests.genruntimeconfig.cache
 C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyAppUnitTests\obj\Debug\net6.0\ref\EnergyAppUnitTests.dll
+C:\tmp\Tech_Challenge\EnergyChallengeApp\EnergyAppUnitTests\bin\Debug\net6.0\appsettings.test.json

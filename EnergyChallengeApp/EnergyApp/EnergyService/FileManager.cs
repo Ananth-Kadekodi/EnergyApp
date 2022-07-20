@@ -4,14 +4,9 @@ using System.Xml.Serialization;
 
 namespace EnergyApp.EnergyService
 {
-    public class FileManager : IFileManager
+    public class FileManager 
     {
-        private static string referenceDataFilePath = "REFERENCE_FILE_PATH";
-        private static string inputDataFilePath = "INPUT_FILE_PATH";
-        private static string outputDataFilePath = "OUTPUT_FILE_PATH";
-        private static string archiveDataFilePath = "ARCHIVE_FILE_PATH";
-
-        public ReferenceData LoadReferenceDataFile(string fileName)
+        public ReferenceData LoadReferenceDataFile(string fileName, string referenceDataFilePath)
         {
             ReferenceData referenceData = new ReferenceData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(ReferenceData));
@@ -40,7 +35,7 @@ namespace EnergyApp.EnergyService
             return (fileDirectoryPath + fileName);
         }
 
-        public GenerationData LoadInputXMLFile(string fileName)
+        public GenerationData LoadInputXMLFile(string fileName, string inputDataFilePath)
         {
             GenerationData generationData = new GenerationData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationData));
@@ -62,15 +57,16 @@ namespace EnergyApp.EnergyService
             return generationData;
         }
 
-        public void WriteOutputToFile(GenerationOutput generationOutputData, string outFileName, string inputFileName)
+        public void WriteOutputToFile(GenerationOutput generationOutputData, string outFileName, string inputFileName, string outputDataFilePath, string inputDataFilePath, string archiveDataFilePath)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationOutput));
 
             var generatedOutputFileName = retrieveOutputFileName(outFileName);
+            var generatedArchiveFileName = retrieveArchiveFileName(outFileName);
 
             var outputFilePath = RetrieveFilePath(outputDataFilePath, generatedOutputFileName);
             var inputFilePath = RetrieveFilePath(inputDataFilePath, inputFileName);
-            var archiveFilePath = RetrieveFilePath(archiveDataFilePath, inputFileName);
+            var archiveFilePath = RetrieveFilePath(archiveDataFilePath, generatedArchiveFileName);
             try
             {
                 TextWriter writer = new StreamWriter(outputFilePath);
@@ -87,9 +83,14 @@ namespace EnergyApp.EnergyService
             }
         }
 
-        private string retrieveOutputFileName(string filename)
+        private string retrieveOutputFileName(string fileName)
         {
             return filename + "-Result.xml";
+        }
+
+        private string retrieveArchiveFileName(string fileName)
+        {
+            return filename + DateTime.Now.ToFileTime() + ".xml"; 
         }
     }
 }

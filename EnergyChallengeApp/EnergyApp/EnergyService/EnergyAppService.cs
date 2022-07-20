@@ -4,6 +4,11 @@
     {
         private static string inputDataFileDirectory = "INPUT_FILE_DIRECTORY";
         private static string referenceDataFileName = "ReferenceData.xml";
+        private static string referenceDataFilePath = "REFERENCE_FILE_PATH";
+        private static string inputDataFilePath = "INPUT_FILE_PATH";
+        private static string outputDataFilePath = "OUTPUT_FILE_PATH";
+        private static string archiveDataFilePath = "ARCHIVE_FILE_PATH";
+
         public void RunApplication()
         {
             FileManager fileManager = new FileManager();
@@ -18,10 +23,10 @@
                 var inputFileName = Path.GetFileName(inputFile);
                 var inputFileNameWithoutExt = Path.GetFileNameWithoutExtension(inputFile);
 
-                var referenceData = fileManager.LoadReferenceDataFile(referenceDataFileName);
-                var generationReportData = fileManager.LoadInputXMLFile(inputFileName);
+                var referenceData = fileManager.LoadReferenceDataFile(referenceDataFileName, referenceDataFilePath);
+                var generationReportData = fileManager.LoadInputXMLFile(inputFileName, inputDataFilePath);
                 var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
-                fileManager.WriteOutputToFile(generationOutputData, inputFileNameWithoutExt, inputFileName);
+                fileManager.WriteOutputToFile(generationOutputData, inputFileNameWithoutExt, inputFileName, outputDataFilePath, inputDataFilePath, archiveDataFilePath);
             }
         }
 
