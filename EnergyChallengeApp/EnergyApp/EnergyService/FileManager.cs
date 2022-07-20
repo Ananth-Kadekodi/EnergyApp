@@ -69,6 +69,8 @@ namespace EnergyApp.EnergyService
                 xmlSerializer.Serialize(writer, generationOutputData);
                 writer.Close();
 
+                File.Delete(inputFilePath);
+
             } catch (Exception ex)
             {
                 Console.WriteLine("Error outputting to file", ex.Message);

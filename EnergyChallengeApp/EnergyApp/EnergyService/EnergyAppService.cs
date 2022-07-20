@@ -32,6 +32,13 @@ namespace EnergyApp.EnergyService
 
         private void FileCreatedInMonitoredDirectory(object sender, FileSystemEventArgs e)
         {
+            var fileName = e.FullPath;
+
+            if (!File.Exists(fileName))
+            {
+                return;
+            }
+
             Console.WriteLine("New file found - running application");
             RunApplication();
         }
