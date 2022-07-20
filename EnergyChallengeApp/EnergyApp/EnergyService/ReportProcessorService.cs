@@ -52,6 +52,24 @@ namespace EnergyApp.EnergyService
 
             try
             {
+                if (generationData.Gas.GasGeneratorData.Count > 0)
+                {
+                    foreach (var generator in generationData.Gas.GasGeneratorData)
+                    {
+                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
+                        totalGenerations.Add(totalGeneration);
+
+                        energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error performing calculations for gas data", ex.Message);
+            }
+
+            try
+            {
                 if (generationData.Coal.CoalGeneratorData.Count > 0)
                 {
                     foreach (var generator in generationData.Coal.CoalGeneratorData)
@@ -70,24 +88,6 @@ namespace EnergyApp.EnergyService
             {
                 Console.WriteLine("Error performing calculations for coal data", ex.Message);
             }
-
-            try
-            {
-                if (generationData.Gas.GasGeneratorData.Count > 0)
-                {
-                    foreach (var generator in generationData.Gas.GasGeneratorData)
-                    {
-                        var totalGeneration = energyServiceCalculator.CalculateTotalGeneratorEnergy(generator, referenceData.Factors.ValueFactor.Medium);
-                        totalGenerations.Add(totalGeneration);
-
-                        energyServiceCalculator.CalculateMaxGeneratorEmissions(generator, generator.EmissionsRating, highestDailyEmissions, referenceData.Factors.EmissionsFactor.Medium);
-                    }
-                }
-            } catch (Exception ex)
-            {
-                Console.WriteLine("Error performing calculations for gas data", ex.Message);
-            }
-           
         }
     }
 }

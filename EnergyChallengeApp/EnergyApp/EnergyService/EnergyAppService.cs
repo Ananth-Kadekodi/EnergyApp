@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnergyApp.EnergyService
+﻿namespace EnergyApp.EnergyService
 {
     public class EnergyAppService 
     {
+        private static string inputDataFileDirectory = "INPUT_FILE_DIRECTORY";
+        private static string referenceDataFileName = "ReferenceData.xml";
         public void RunApplication()
         {
             FileManager fileManager = new FileManager();
             ReportProcessorService reportProcessorService = new ReportProcessorService();
 
-            var referenceData = fileManager.LoadReferenceDataFile();
-            var generationReportData = fileManager.LoadInputXMLFile();
-            var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
-            fileManager.WriteOutputToFile(generationOutputData);
+            var inputFileDirectory = fileManager.RetrieveFilePath(inputDataFileDirectory, "");
+
+            string[] inputFiles = Directory.GetFiles(inputFileDirectory);
+            
+            foreach(string inputFile in inputFiles)
+            {
+                var inputFileName = Path.GetFileName(inputFile);
+                var inputFileNameWithoutExt = Path.GetFileNameWithoutExtension(inputFile);
+
+                var referenceData = fileManager.LoadReferenceDataFile(referenceDataFileName);
+                var generationReportData = fileManager.LoadInputXMLFile(inputFileName);
+                var generationOutputData = reportProcessorService.ProcessInputReport(generationReportData, referenceData);
+                fileManager.WriteOutputToFile(generationOutputData, inputFileNameWithoutExt, inputFileName);
+            }
         }
 
         public void MonitorDirectory(string path)

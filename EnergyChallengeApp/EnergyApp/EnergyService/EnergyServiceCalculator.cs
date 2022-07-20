@@ -14,7 +14,7 @@ namespace EnergyApp.EnergyService
             return generator;
         }
 
-        public double AddDailyEnergy(List<DayGeneration> dayGenerations, double generatorFactor)
+        private double AddDailyEnergy(List<DayGeneration> dayGenerations, double generatorFactor)
         {
             double total = 0;
 
