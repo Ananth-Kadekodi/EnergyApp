@@ -85,12 +85,12 @@ namespace EnergyApp.EnergyService
 
         private string retrieveOutputFileName(string fileName)
         {
-            return filename + "-Result.xml";
+            return fileName + "-Result.xml";
         }
 
         private string retrieveArchiveFileName(string fileName)
         {
-            return filename + DateTime.Now.ToFileTime() + ".xml"; 
+            return fileName + DateTime.Now.ToFileTime() + ".xml"; 
         }
     }
 }
