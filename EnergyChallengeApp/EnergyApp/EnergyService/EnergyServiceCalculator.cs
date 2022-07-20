@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace EnergyApp.EnergyService
 {
-    public class EnergyServiceCalculator
+    public class EnergyServiceCalculator : IEnergyServiceCalculator
     {
         public Generator CalculateTotalGeneratorEnergy(ResourceGeneration resourceGeneration, double generatorFactor)
         {
@@ -31,11 +31,12 @@ namespace EnergyApp.EnergyService
                     total += CalculateDailyEnergyGenerated(dayGeneration.Energy, dayGeneration.Price, generatorFactor);
                 }
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Error calculating daily energy usage", ex.Message);
             }
-           
+
             return total;
         }
 
@@ -73,10 +74,11 @@ namespace EnergyApp.EnergyService
                         addMaxDayEmissionRecord(generator.Name, dayGeneration.Date, dayEnergyEmission, highestDailyEmissions);
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Error calculating daily max emissions", ex.Message);
-            }    
+            }
         }
 
         private void addMaxDayEmissionRecord(string name, DateTime date, double dayEnergyEmission, List<DailyEmissionGenerated> highestDailyEmissions)
@@ -96,21 +98,21 @@ namespace EnergyApp.EnergyService
 
         public GeneratorHeatRates CalculateHeatRate(CoalGeneratorData generator, double actualNetGeneration, double totalHeatInput)
         {
-            var heatRate = new GeneratorHeatRates{ Name = generator.Name};
+            var heatRate = new GeneratorHeatRates { Name = generator.Name };
             heatRate.HeatRate = RetrieveHeatRate(actualNetGeneration, totalHeatInput);
             return heatRate;
         }
 
         private double? RetrieveHeatRate(double actualNetGeneration, double totalHeatInput)
         {
-            if (actualNetGeneration != 0  && totalHeatInput != 0)
+            if (actualNetGeneration != 0 && totalHeatInput != 0)
             {
                 return totalHeatInput / actualNetGeneration;
             }
             else
             {
                 return null;
-            }         
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EnergyApp.EnergyService
 {
-    public class EnergyAppService 
+    public class EnergyAppService : IEnergyAppService
     {
         private static string inputDataFileDirectory = "INPUT_FILE_DIRECTORY";
         private static string referenceDataFileName = "ReferenceData.xml";
@@ -12,8 +12,8 @@
             var inputFileDirectory = fileManager.RetrieveFilePath(inputDataFileDirectory, "");
 
             string[] inputFiles = Directory.GetFiles(inputFileDirectory);
-            
-            foreach(string inputFile in inputFiles)
+
+            foreach (string inputFile in inputFiles)
             {
                 var inputFileName = Path.GetFileName(inputFile);
                 var inputFileNameWithoutExt = Path.GetFileNameWithoutExtension(inputFile);

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace EnergyApp.EnergyService
 {
-    public class FileManager
+    public class FileManager : IFileManager
     {
         private static string referenceDataFilePath = "REFERENCE_FILE_PATH";
         private static string inputDataFilePath = "INPUT_FILE_PATH";
@@ -16,7 +16,7 @@ namespace EnergyApp.EnergyService
             ReferenceData referenceData = new ReferenceData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(ReferenceData));
 
-            var referenceFilePath = RetrieveFilePath(referenceDataFilePath,fileName);
+            var referenceFilePath = RetrieveFilePath(referenceDataFilePath, fileName);
 
             try
             {
@@ -24,18 +24,19 @@ namespace EnergyApp.EnergyService
                 {
                     referenceData = (ReferenceData)xmlSerializer.Deserialize(reader);
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Exception retrieving reference file data", ex.Message);
             }
-            
+
             return referenceData;
         }
 
         public string RetrieveFilePath(string fileDirectory, string fileName)
         {
             var referenceDataConfig = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var fileDirectoryPath = referenceDataConfig.GetValue<string>("AppSettings:"+ fileDirectory);
+            var fileDirectoryPath = referenceDataConfig.GetValue<string>("AppSettings:" + fileDirectory);
             return (fileDirectoryPath + fileName);
         }
 
@@ -44,7 +45,7 @@ namespace EnergyApp.EnergyService
             GenerationData generationData = new GenerationData();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GenerationData));
 
-            var inputFilePath = RetrieveFilePath(inputDataFilePath,fileName);
+            var inputFilePath = RetrieveFilePath(inputDataFilePath, fileName);
 
             try
             {
@@ -52,7 +53,8 @@ namespace EnergyApp.EnergyService
                 {
                     generationData = (GenerationData)xmlSerializer.Deserialize(reader);
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Exception retrieving input data file", ex.Message);
             }
@@ -78,7 +80,8 @@ namespace EnergyApp.EnergyService
                 File.Copy(inputFilePath, archiveFilePath);
                 File.Delete(inputFilePath);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Error outputting to file", ex.Message);
             }

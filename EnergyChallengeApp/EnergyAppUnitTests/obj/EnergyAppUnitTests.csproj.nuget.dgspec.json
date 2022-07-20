@@ -1,0 +1,268 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyAppUnitTests\\EnergyAppUnitTests.csproj": {}
+  },
+  "projects": {
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyAppUnitTests\\EnergyAppUnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyAppUnitTests\\EnergyAppUnitTests.csproj",
+        "projectName": "EnergyAppUnitTests",
+        "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyAppUnitTests\\EnergyAppUnitTests.csproj",
+        "packagesPath": "C:\\Users\\TABKAD\\.nuget\\packages\\",
+        "outputPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyAppUnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\TABKAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/NuGet": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/rwwa-nuget-apps": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/uHvAtkbzFhzG3KOafXlhCjMVkaLOKUCnOZA1nRov1JyWEp53H8/api": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj": {
+                "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj"
+              },
+              "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {
+                "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj",
+        "projectName": "EnergyApp",
+        "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj",
+        "packagesPath": "C:\\Users\\TABKAD\\.nuget\\packages\\",
+        "outputPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\TABKAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/NuGet": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/rwwa-nuget-apps": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/uHvAtkbzFhzG3KOafXlhCjMVkaLOKUCnOZA1nRov1JyWEp53H8/api": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
+        "projectName": "EnergyChallengeApp.API",
+        "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\EnergyChallengeApp.API.csproj",
+        "packagesPath": "C:\\Users\\TABKAD\\.nuget\\packages\\",
+        "outputPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyChallengeApp.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\TABKAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/NuGet": {},
+          "http://artifactory.rwwa.com.au:8081/artifactory/api/nuget/rwwa-nuget-apps": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/uHvAtkbzFhzG3KOafXlhCjMVkaLOKUCnOZA1nRov1JyWEp53H8/api": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj": {
+                "projectPath": "C:\\tmp\\Tech_Challenge\\EnergyChallengeApp\\EnergyApp\\EnergyApp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
